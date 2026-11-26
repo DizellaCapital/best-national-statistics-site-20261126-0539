@@ -1,0 +1,136 @@
+/* NusaStat — gaya portal statistik: bersih, kontras tinggi, rapi di desktop dan ponsel. */
+:root {
+  --biru: #0b5fa5;
+  --biru-tua: #0a3d66;
+  --merah: #b91c1c;
+  --teal: #0e7490;
+  --tinta: #0f172a;
+  --abu: #475569;
+  --garis: #e2e8f0;
+  --latar: #f1f5f9;
+  --kartu: #ffffff;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--tinta);
+  background: var(--latar);
+  line-height: 1.55;
+}
+a { color: var(--biru); }
+h1 { font-size: 1.9rem; margin: 0 0 .4rem; line-height: 1.2; }
+h2 { font-size: 1.25rem; margin: 0 0 .35rem; }
+.lead { font-size: 1.08rem; color: var(--abu); max-width: 62ch; }
+
+/* Header */
+.topbar {
+  background: var(--biru-tua);
+  color: #fff;
+  padding: .7rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.brand { color: #fff; text-decoration: none; font-weight: 800; font-size: 1.25rem; display: flex; align-items: center; gap: .5rem; }
+.brand-mark {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2rem; height: 2rem; border-radius: .4rem;
+  background: var(--merah); color: #fff; font-size: 1.1rem;
+}
+.nav { display: flex; gap: .25rem; flex-wrap: wrap; margin-left: auto; }
+.nav a {
+  color: #dbeafe; text-decoration: none; padding: .45rem .7rem;
+  border-radius: .4rem; font-size: .95rem;
+}
+.nav a:hover { background: rgba(255,255,255,.14); color: #fff; }
+.nav a.aktif { background: #fff; color: var(--biru-tua); font-weight: 700; }
+#menu-btn {
+  display: none; margin-left: auto; background: transparent; color: #fff;
+  border: 1px solid rgba(255,255,255,.5); border-radius: .4rem;
+  padding: .4rem .7rem; font-size: .95rem; cursor: pointer;
+}
+
+main { max-width: 1060px; margin: 0 auto; padding: 1.25rem 1rem 2rem; }
+footer { max-width: 1060px; margin: 0 auto; padding: 1rem; color: var(--abu); font-size: .9rem; border-top: 1px solid var(--garis); }
+footer a { color: var(--abu); }
+
+/* Hero + KPI */
+.hero { background: linear-gradient(135deg, var(--biru-tua), var(--biru)); color: #fff; border-radius: .8rem; padding: 1.4rem 1.5rem; margin-bottom: 1rem; }
+.hero h1 { color: #fff; }
+.hero p { color: #dbeafe; margin: .3rem 0 0; max-width: 70ch; }
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin-bottom: 1rem; }
+.kpi {
+  background: var(--kartu); border: 1px solid var(--garis); border-radius: .7rem;
+  padding: .9rem 1rem; text-decoration: none; color: var(--tinta);
+  display: flex; flex-direction: column; gap: .15rem;
+}
+.kpi:hover { border-color: var(--biru); box-shadow: 0 2px 10px rgba(11,95,165,.15); }
+.kpi-angka { font-size: 1.55rem; font-weight: 800; color: var(--biru); }
+.kpi-label { font-weight: 600; }
+.kpi-src { font-size: .82rem; color: var(--abu); }
+
+/* Panel, grafik, tabel */
+.panel { background: var(--kartu); border: 1px solid var(--garis); border-radius: .7rem; padding: 1.1rem 1.2rem; margin-bottom: 1rem; }
+.panel .sub { color: var(--abu); margin: 0 0 .6rem; }
+.chart { width: 100%; height: auto; display: block; }
+.src { font-size: .85rem; color: var(--abu); margin: .6rem 0 0; }
+.src-inline { font-size: .82rem; color: var(--abu); }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--garis); }
+thead th { background: #f8fafc; font-weight: 700; }
+tbody tr:nth-child(even) { background: #f8fafc; }
+th[data-sort] { cursor: pointer; user-select: none; }
+th[data-sort]:hover { color: var(--biru); }
+
+/* Kartu statistik kecil */
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin-bottom: 1rem; }
+.stat-card {
+  background: var(--kartu); border: 1px solid var(--garis); border-radius: .7rem;
+  padding: .9rem 1rem; display: flex; flex-direction: column; gap: .15rem;
+}
+.stat-angka { font-size: 1.5rem; font-weight: 800; color: var(--merah); }
+.stat-label { font-weight: 700; }
+.stat-ket { font-size: .88rem; color: var(--abu); }
+.stat-src { font-size: .8rem; color: var(--abu); }
+
+/* Daftar + kontrol */
+.sorotan { margin: .2rem 0; padding-left: 1.2rem; }
+.sorotan li { margin-bottom: .45rem; }
+.sumber-list { margin: .2rem 0; padding-left: 1.2rem; }
+.sumber-list li { margin-bottom: .5rem; }
+.fakta { display: grid; grid-template-columns: 220px 1fr; gap: .3rem .8rem; margin: .2rem 0; }
+.fakta dt { font-weight: 700; }
+.fakta dd { margin: 0; }
+.controls { display: flex; gap: .8rem; flex-wrap: wrap; align-items: end; margin-bottom: .8rem; }
+.field { display: flex; flex-direction: column; gap: .25rem; font-weight: 600; font-size: .92rem; }
+.field input, .field select {
+  padding: .5rem .6rem; border: 1px solid #cbd5e1; border-radius: .4rem;
+  font: inherit; background: #fff; min-width: 10rem;
+}
+.btn {
+  padding: .55rem 1rem; border: none; border-radius: .4rem; cursor: pointer;
+  background: var(--biru); color: #fff; font: inherit; font-weight: 700;
+}
+.btn:hover { background: var(--biru-tua); }
+
+/* Ponsel */
+@media (max-width: 760px) {
+  h1 { font-size: 1.5rem; }
+  #menu-btn { display: block; }
+  .nav { display: none; width: 100%; flex-direction: column; margin-left: 0; }
+  .nav.buka { display: flex; }
+  .nav a { padding: .6rem .7rem; }
+  .kpi-grid, .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .fakta { grid-template-columns: 1fr; }
+  main { padding: 1rem .7rem 1.5rem; }
+  .panel { padding: .9rem; }
+}
+@media (max-width: 420px) {
+  .kpi-grid, .stat-grid { grid-template-columns: 1fr; }
+}
