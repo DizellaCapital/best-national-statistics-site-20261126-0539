@@ -2,7 +2,7 @@
 // Menjalankan: node serve.ts  →  app/ di http://localhost:8080
 //              node serve.ts --port 9000  →  port lain.
 // Hanya menyajikan berkas di bawah app/, menolak path di luarnya, dan mengirim
-// MIME type yang benar untuk HTML, JS, CSS, JSON, dan gambar.
+// MIME type yang benar untuk HTML, JS, CSS, JSON, CSV, dan gambar.
 
 import { createReadStream, statSync } from 'node:fs';
 import { createServer } from 'node:http';
@@ -21,6 +21,8 @@ const TYPES = {
   '.mjs': 'text/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.csv': 'text/csv; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',

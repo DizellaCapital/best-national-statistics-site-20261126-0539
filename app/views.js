@@ -1,6 +1,8 @@
 // views.js — perender halaman NusaStat.
 // Satu tugas: mengubah data (data.js) + grafik (charts.js) menjadi HTML tiap rute.
 // Semua angka datang dari data.js; tidak ada angka yang ditulis di sini.
+// Catatan: label sumbu grafik memakai formatId agar angka tampil mengikuti
+// penulisan Indonesia (koma desimal), sedangkan nilai mentah tetap apa adanya.
 
 import { YEARS, SERIES, STRUKTUR_UMUR, PROVINSI, KPI_2024, FAKTA, formatId } from './data.js';
 import { barChart, lineChart, hbarChart } from './charts.js';
@@ -36,18 +38,19 @@ export function viewHome() {
       <li><strong>IPM menembus 75,02</strong> pada 2024, naik dari 71,94 pada 2019. <span class="src-inline">BPS</span></li>
       <li><strong>Ekonomi tumbuh 5,03%</strong> pada 2024, stabil di atas 5% tiga tahun berturut-turut. <span class="src-inline">BPS</span></li>
       <li><strong>Pengangguran 4,91%</strong> pada Agustus 2024 — terendah sejak 2019. <span class="src-inline">BPS</span></li>
+      <li><strong>Inflasi hanya 1,57%</strong> pada 2024 — daya beli terjaga di tengah harga global yang bergejolak. <span class="src-inline">BPS</span></li>
     </ul>`;
   return `
     <div class="hero">
       <h1>Statistik Indonesia dalam Angka</h1>
-      <p>Data resmi penduduk, ekonomi, kesehatan, dan pendidikan Indonesia — lengkap dengan sumber dan tahun rujukannya. Pilih topik di bawah atau jelajahi lewat menu.</p>
+      <p>Data resmi penduduk, ekonomi, kesehatan, dan pendidikan Indonesia — lengkap dengan sumber dan tahun rujukannya, mengikuti publikasi terbaru BPS. Pilih topik di bawah atau jelajahi lewat menu.</p>
     </div>
     <div class="kpi-grid">${kpi}</div>
     ${section('Penduduk terus tumbuh', 'Jumlah penduduk Indonesia 2014–2024 (juta jiwa).',
       barChart(pointsOf('penduduk'), { title: 'Penduduk 2014–2024', color: '#0b5fa5', tickFmt: (v) => Math.round(v) }) + sourceNote('penduduk'))}
     ${section('Pertumbuhan ekonomi stabil', 'Pertumbuhan ekonomi tahunan 2019–2024 (% yoy).',
       lineChart(pointsOf('pertumbuhan'), { title: 'Pertumbuhan ekonomi 2019–2024', color: '#b91c1c', tickFmt: (v) => v.toFixed(0) + '%' }) + sourceNote('pertumbuhan'))}
-    ${section('Sorotan 2024', 'Empat kabar baik dari data terbaru.', sorotan)}`;
+    ${section('Sorotan 2024', 'Lima kabar baik dari data terbaru.', sorotan)}`;
 }
 
 export function viewPenduduk() {

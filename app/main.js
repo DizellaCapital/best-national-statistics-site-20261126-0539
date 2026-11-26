@@ -1,6 +1,8 @@
 // main.js — router hash + interaksi NusaStat.
 // Satu tugas: memuat halaman dari views.js ke #app dan mengikat semua kontrol
 // (pencarian provinsi, pengalih grafik, tabel data + unduh CSV) agar berfungsi.
+// Pencarian provinsi menampilkan baris "tidak ada hasil" saat tidak ada
+// provinsi yang cocok, supaya tabel tidak tampak kosong tanpa penjelasan.
 
 import { SERIES, YEARS, formatId } from './data.js';
 import { barChart, lineChart } from './charts.js';
@@ -36,12 +38,23 @@ function render() {
 function bindProvinsi() {
   const input = document.getElementById('cari-provinsi');
   if (!input) return;
-  const rows = Array.from(document.querySelectorAll('#tabel-provinsi tbody tr'));
+  const tbody = document.querySelector('#tabel-provinsi tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  // Baris kosong: muncul hanya bila tidak ada provinsi yang cocok dengan kata kunci.
+  const emptyRow = document.createElement('tr');
+  emptyRow.id = 'provinsi-kosong';
+  emptyRow.innerHTML = '<td colspan="4">Tidak ada provinsi yang cocok dengan pencarian.</td>';
+  emptyRow.style.display = 'none';
+  tbody.appendChild(emptyRow);
   input.addEventListener('input', () => {
     const q = input.value.trim().toLowerCase();
+    let visible = 0;
     rows.forEach((r) => {
-      r.style.display = r.textContent.toLowerCase().includes(q) ? '' : 'none';
+      const show = r.textContent.toLowerCase().includes(q);
+      r.style.display = show ? '' : 'none';
+      if (show) visible++;
     });
+    emptyRow.style.display = visible === 0 ? '' : 'none';
   });
 }
 
