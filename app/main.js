@@ -56,6 +56,13 @@ function bindProvinsi() {
     });
     emptyRow.style.display = visible === 0 ? '' : 'none';
   });
+  // Escape mengosongkan pencarian dan menampilkan kembali semua provinsi.
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && input.value) {
+      input.value = '';
+      input.dispatchEvent(new Event('input'));
+    }
+  });
 }
 
 // --- Halaman Ekonomi: pengalih batang/garis ---

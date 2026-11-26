@@ -109,6 +109,7 @@ th[data-sort]:hover { color: var(--biru); }
 /* Daftar + kontrol */
 .sorotan { margin: .2rem 0; padding-left: 1.2rem; }
 .sorotan li { margin-bottom: .45rem; }
+.sorotan li strong { color: var(--biru-tua); }
 .sumber-list { margin: .2rem 0; padding-left: 1.2rem; }
 .sumber-list li { margin-bottom: .5rem; }
 .fakta { display: grid; grid-template-columns: 220px 1fr; gap: .3rem .8rem; margin: .2rem 0; }

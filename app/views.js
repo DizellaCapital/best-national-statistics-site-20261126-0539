@@ -39,6 +39,7 @@ export function viewHome() {
       <li><strong>Ekonomi tumbuh 5,03%</strong> pada 2024, stabil di atas 5% tiga tahun berturut-turut. <span class="src-inline">BPS</span></li>
       <li><strong>Pengangguran 4,91%</strong> pada Agustus 2024 — terendah sejak 2019. <span class="src-inline">BPS</span></li>
       <li><strong>Inflasi hanya 1,57%</strong> pada 2024 — daya beli terjaga di tengah harga global yang bergejolak. <span class="src-inline">BPS</span></li>
+      <li><strong>Kemiskinan turun lagi ke 8,07%</strong> pada Maret 2026 — terendah sepanjang sejarah pencatatan BPS. <span class="src-inline">BPS</span></li>
     </ul>`;
   return `
     <div class="hero">
@@ -50,7 +51,7 @@ export function viewHome() {
       barChart(pointsOf('penduduk'), { title: 'Penduduk 2014–2024', color: '#0b5fa5', tickFmt: (v) => Math.round(v) }) + sourceNote('penduduk'))}
     ${section('Pertumbuhan ekonomi stabil', 'Pertumbuhan ekonomi tahunan 2019–2024 (% yoy).',
       lineChart(pointsOf('pertumbuhan'), { title: 'Pertumbuhan ekonomi 2019–2024', color: '#b91c1c', tickFmt: (v) => v.toFixed(0) + '%' }) + sourceNote('pertumbuhan'))}
-    ${section('Sorotan 2024', 'Lima kabar baik dari data terbaru.', sorotan)}`;
+    ${section('Sorotan 2024', 'Enam kabar baik dari data terbaru.', sorotan)}`;
 }
 
 export function viewPenduduk() {
@@ -76,7 +77,7 @@ export function viewEkonomi() {
   const kartu = [
     { label: 'Inflasi 2024', angka: '1,57%', ket: 'yoy — terendah dalam 5 tahun', src: 'BPS' },
     { label: 'Pengangguran 2024', angka: '4,91%', ket: 'Agustus 2024, angkatan kerja', src: 'BPS' },
-    { label: 'Kemiskinan Sep 2024', angka: '8,57%', ket: 'kemiskinan ekstrem 0,83%', src: 'BPS' },
+    { label: 'Kemiskinan Mar 2026', angka: '8,07%', ket: 'terendah sepanjang pencatatan BPS', src: 'BPS' },
     { label: 'Rasio Gini 2024', angka: '0,379', ket: 'ketimpangan pendapatan', src: 'BPS' },
   ].map((c) => `<div class="stat-card"><span class="stat-angka">${c.angka}</span><span class="stat-label">${c.label}</span><span class="stat-ket">${c.ket}</span><span class="stat-src">Sumber: ${c.src}</span></div>`).join('');
   const tahun = YEARS.filter((y) => SERIES.pdb.values[y] !== undefined);
